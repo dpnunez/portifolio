@@ -24,6 +24,14 @@
 		"@typescript-eslint",
 		"prettier"
 	],
+	"settings": {
+    "import/resolver": {
+      "node": {
+				"paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
 	"rules": {
 		"prettier/prettier": "error",
 		"react/prop-types": "off",
@@ -34,6 +42,7 @@
 		"react/react-in-jsx-scope": "off",
 		"react/jsx-props-no-spreading": [1, {
 			"custom": "ignore"
-		}]
+		}],
+		"import/prefer-default-export": "off"
 	}
 }
