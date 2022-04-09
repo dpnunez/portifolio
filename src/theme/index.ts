@@ -13,9 +13,14 @@ const styles = {
   }
 };
 
+const fonts = {
+  heading: "'JetBrains Mono', monospace"
+};
+
 const theme = {
   colors,
-  styles
+  styles,
+  fonts
 };
 
 export { theme };
