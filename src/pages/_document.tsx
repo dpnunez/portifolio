@@ -7,6 +7,8 @@ import Document, {
   Html
 } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
+import { ColorModeScript } from '@chakra-ui/react';
+import { theme } from 'theme';
 
 export default class MyDocument extends Document {
   static async getInitialProps(
@@ -46,8 +48,13 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&display=swap"
             rel="stylesheet"
           />
+          <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <body>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />
         </body>
