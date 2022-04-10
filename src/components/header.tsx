@@ -1,42 +1,65 @@
 import { Flex, Heading, Text, HStack, Button } from '@chakra-ui/react';
 import NextLink from 'next/link';
+import { motion } from 'framer-motion';
+
+import { useScrollParams } from 'hooks/useScrollParams';
 import { menu } from '../constants';
 
-const Header = () => (
-  <Flex
-    as="header"
-    w="100vw"
-    position="fixed"
-    height="menu-height"
-    boxShadow="xl"
-  >
+const Header = () => {
+  const scrollDirection = useScrollParams({ thresholdPixels: 50 });
+
+  const menuStateParse =
+    scrollDirection.isOnTop || scrollDirection.direction === 'up'
+      ? 'show'
+      : 'hidden';
+
+  const variants = {
+    show: {
+      y: 0
+    },
+    hidden: {
+      y: -100
+    }
+  };
+
+  return (
     <Flex
-      width="100%"
-      maxWidth="container.xl"
-      px={2}
-      py={6}
-      margin="auto"
-      justifyContent="space-between"
+      as={motion.header}
+      variants={variants}
+      animate={menuStateParse}
+      w="100vw"
+      position="fixed"
+      height="menu-height"
+      boxShadow="xl"
     >
-      <Heading color="primary.500">dp</Heading>
-      <HStack as="nav" alignItems="center" spacing={8}>
-        {menu.map((menuItem, index) => (
-          <NextLink href="/" key={menuItem.key}>
-            <Text cursor="pointer" variant="digital">
-              <Text as="span" color="primary.500">
-                0{index}
-                {'. '}
+      <Flex
+        width="100%"
+        maxWidth="container.xl"
+        px={2}
+        py={6}
+        margin="auto"
+        justifyContent="space-between"
+      >
+        <Heading color="primary.500">dp</Heading>
+        <HStack as="nav" alignItems="center" spacing={8}>
+          {menu.map((menuItem, index) => (
+            <NextLink href="/" key={menuItem.key}>
+              <Text cursor="pointer" variant="digital">
+                <Text as="span" color="primary.500">
+                  0{index}
+                  {'. '}
+                </Text>
+                {menuItem.name}
               </Text>
-              {menuItem.name}
-            </Text>
-          </NextLink>
-        ))}
-        <Button colorScheme="primary" variant="outline">
-          Resume
-        </Button>
-      </HStack>
+            </NextLink>
+          ))}
+          <Button colorScheme="primary" variant="outline">
+            Resume
+          </Button>
+        </HStack>
+      </Flex>
     </Flex>
-  </Flex>
-);
+  );
+};
 
 export { Header };
