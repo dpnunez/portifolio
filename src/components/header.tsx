@@ -30,7 +30,7 @@ const Header = () => {
       w="100vw"
       position="fixed"
       height="menu-height"
-      boxShadow="xl"
+      boxShadow="md"
     >
       <Flex
         width="100%"
@@ -40,7 +40,12 @@ const Header = () => {
         margin="auto"
         justifyContent="space-between"
       >
-        <Heading color="primary.500">dp</Heading>
+        <Heading color="primary.500">
+          dp
+          <Heading as="span" color="gray.600">
+            .
+          </Heading>
+        </Heading>
         <HStack as="nav" alignItems="center" spacing={8}>
           {menu.map((menuItem, index) => (
             <NextLink href="/" key={menuItem.key}>
