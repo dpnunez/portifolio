@@ -27,7 +27,8 @@ const colors = {
     '800': '#640213',
     '900': '#320109'
   },
-  background: '#011627'
+  background: '#011627',
+  backgroundAlpha: '#01162799'
 };
 
 const styles = {
@@ -52,7 +53,7 @@ const components = {
 };
 
 const sizes = {
-  'menu-height': '6rem'
+  'menu-height': '5rem'
 };
 
 const theme = {

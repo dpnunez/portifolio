@@ -4,7 +4,7 @@ import { Box } from '@chakra-ui/react';
 
 const Home: NextPage = () => (
   <>
-    <Header />
+    <Header />a asdijfjia
     <Box w="100vw" height="200vh" />
   </>
 );

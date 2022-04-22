@@ -5,17 +5,17 @@ interface menuItemInterface {
 }
 const menu: menuItemInterface[] = [
   {
-    name: 'sobre',
+    name: 'About',
     key: 'about',
     link: '/'
   },
   {
-    name: 'experiência',
+    name: 'Experience',
     key: 'xp',
     link: '/'
   },
   {
-    name: 'contato',
+    name: 'Contact',
     key: 'contact',
     link: '/'
   }

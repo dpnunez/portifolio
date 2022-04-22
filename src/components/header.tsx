@@ -15,15 +15,22 @@ const Header = () => {
 
   const variants = {
     show: {
-      y: 0
+      y: 0,
+      transition: {
+        duration: 0.75
+      }
     },
     hidden: {
-      y: -100
+      y: -100,
+      transition: {
+        duration: 0.75
+      }
     }
   };
 
   return (
     <Flex
+      overflow="hidden"
       as={motion.header}
       variants={variants}
       animate={menuStateParse}
@@ -31,12 +38,13 @@ const Header = () => {
       position="fixed"
       height="menu-height"
       boxShadow="md"
+      background="backgroundAlpha"
+      backdropFilter="blur(10px)"
     >
       <Flex
         width="100%"
         maxWidth="container.xl"
         px={2}
-        py={6}
         margin="auto"
         justifyContent="space-between"
       >
@@ -49,7 +57,7 @@ const Header = () => {
         <HStack as="nav" alignItems="center" spacing={8}>
           {menu.map((menuItem, index) => (
             <NextLink href="/" key={menuItem.key}>
-              <Text cursor="pointer" variant="digital">
+              <Text fontSize="sm" cursor="pointer" variant="digital">
                 <Text as="span" color="primary.500">
                   0{index}
                   {'. '}
