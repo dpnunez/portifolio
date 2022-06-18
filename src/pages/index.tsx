@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
-import { Header } from 'components';
-import { Box } from '@chakra-ui/react';
+import { About, Header, Hero } from 'components';
 
 const Home: NextPage = () => (
   <>
-    <Header />a asdijfjia
-    <Box w="100vw" height="200vh" />
+    <Header />
+    <Hero />
+    <About />
   </>
 );
 

@@ -6,24 +6,22 @@ import { useScrollParams } from 'hooks/useScrollParams';
 import { menu } from '../constants';
 
 const Header = () => {
-  const scrollDirection = useScrollParams({ thresholdPixels: 50 });
+  const { isOnTop, direction } = useScrollParams({ thresholdPixels: 50 });
 
-  const menuStateParse =
-    scrollDirection.isOnTop || scrollDirection.direction === 'up'
-      ? 'show'
-      : 'hidden';
+  const animationDuration = 0.25;
+  const menuStateParse = isOnTop || direction === 'up' ? 'show' : 'hidden';
 
   const variants = {
     show: {
       y: 0,
       transition: {
-        duration: 0.75
+        duration: animationDuration
       }
     },
     hidden: {
       y: -100,
       transition: {
-        duration: 0.75
+        duration: animationDuration
       }
     }
   };
@@ -34,12 +32,14 @@ const Header = () => {
       as={motion.header}
       variants={variants}
       animate={menuStateParse}
-      w="100vw"
+      w="100%"
       position="fixed"
       height="menu-height"
-      boxShadow="md"
+      boxShadow={isOnTop ? 'none' : 'lg'}
+      transition={`box-shadow ${animationDuration}s`}
       background="backgroundAlpha"
       backdropFilter="blur(10px)"
+      zIndex={2}
     >
       <Flex
         width="100%"

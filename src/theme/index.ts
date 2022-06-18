@@ -27,15 +27,26 @@ const colors = {
     '800': '#640213',
     '900': '#320109'
   },
-  background: '#011627',
-  backgroundAlpha: '#01162799'
+  background: '#121214',
+  backgroundAlpha: '#121214D9',
+  'slate-dark': '#454f62'
 };
 
 const styles = {
   global: {
     'html, body': {
       background: 'background',
-      color: 'gray.100'
+      color: 'gray.100',
+      'scroll-behavior': 'smooth',
+      '&::-webkit-scrollbar': {
+        width: '12px'
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: 'slate-dark',
+        border: '3px solid',
+        borderColor: 'background',
+        borderRadius: '10px'
+      }
     }
   }
 };
@@ -52,8 +63,14 @@ const components = {
   Text
 };
 
+const menuHeight = '70px';
+
 const sizes = {
-  'menu-height': '5rem'
+  'menu-height': menuHeight
+};
+
+const space = {
+  'menu-height': menuHeight
 };
 
 const theme = {
@@ -62,7 +79,28 @@ const theme = {
   styles,
   fonts,
   components,
-  sizes
+  sizes,
+  space
 };
 
-export { theme };
+const animations = {
+  onScreen: {
+    in: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        when: 'beforeChildren'
+      }
+    },
+    out: {
+      opacity: 0,
+      y: 40,
+      transition: {
+        duration: 0.5
+      }
+    }
+  }
+};
+
+export { theme, animations };
